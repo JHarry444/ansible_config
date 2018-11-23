@@ -1,0 +1,7 @@
+---
+# tasks file for /etc/ansible/roles/git
+- name: Set-up git
+  package:
+    name: git
+    state: latest
+...

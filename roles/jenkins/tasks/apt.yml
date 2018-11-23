@@ -1,0 +1,9 @@
+- name: Enable Jenkins repository on Debian/Ubuntu
+  shell: 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
+- name: Add repo to system on Debian/Ubuntu
+  apt_key:
+    url: https://jenkins-ci.org/redhat/jenkins-ci.org.key
+    state: present
+- name: Update apt repo 2
+  apt:
+    update_cache: yes

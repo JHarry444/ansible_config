@@ -1,0 +1,8 @@
+- name: Enable Jenkins repository on CentOS
+  get_url: 
+    url: http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo
+    dest: /etc/yum.repos.d/jenkins.repo
+- name: Add repo to system on CentOS
+  rpm_key:
+    key: https://jenkins-ci.org/redhat/jenkins-ci.org.key
+    state: present

@@ -1,0 +1,5 @@
+---
+# vars file for /etc/ansible/roles/nexus
+nexus_home: /home/jjharry444
+sonatype_url: https://sonatype-download.global.ssl.fastly.net/nexus/3/nexus-3.0.2-02-unix.tar.gz
+nexus_ssh_key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC2x/nFt19RUtp/pzP2Fxgnix0XY4+nLFSgEnjKXjdKucU3lzTBP8b60dQT2LMNeAGI4lwGdfP4rr6Bf0YPYSoIauCvb9RsRhC9jFhKKDkODN8N2kHRPSBpn5/XJFmBYpH16q4rnNFLbyrIg5Opohiqdm2C3bg/t+fPLHD8YzHat2trzo7Db5prflg/6tcbKJWQLyIBCAPgkY/gbekhG8MNDRu3QfNmuleo8pD7+aJnG8w2Zibv8isfOw5Gu0HNraRSUFOjUDUahjZRgaf6T7TRkS3v+42qdaKtC6Fi+FAr8lGl/RfPNbLOdzlWqCWcShYJcthz+rwdxz2qPf5RSaKV Jordan Harrison@LAPTOP-QAR04RAT

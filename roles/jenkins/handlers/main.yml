@@ -1,0 +1,7 @@
+---
+# handlers file for /etc/ansible/roles/jenkins
+- name: Restart Jenkins
+  service:
+    name: jenkins
+    state: restarted
+...

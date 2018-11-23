@@ -1,0 +1,5 @@
+- name: Install Java on CentOS
+  package:
+    name: java
+    state: latest
+  become: yes

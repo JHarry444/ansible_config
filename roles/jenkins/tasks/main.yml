@@ -1,0 +1,17 @@
+---
+# tasks file for /etc/ansible/roles/jenkins
+- name: Import tasks for Debian/Ubuntu
+  import_tasks: apt.yml
+  when: ansible_distribution == "Debian" or ansible_distribution == "Ubuntu"
+- name: Import tasks for CentOS
+  import_tasks: yum.yml
+  when: ansible_distribution == "CentOS"
+- name: Install Jenkins
+  package:
+    name: jenkins
+    state: present
+- name: Ensure Jenkins is running
+  service:
+    name: jenkins
+    state: restarted
+...

@@ -1,0 +1,54 @@
+---
+- name: Get file
+  get_url:
+    dest: "{{ nexus_home }}"
+    url: "{{ sonatype_url }}"
+- name: Creates directory
+  file: 
+    path: "/opt/app"
+    state: directory
+- name: Unzip the file
+  unarchive:
+    remote_src: yes
+    src: "{{ nexus_home }}/nexus-3.0.2-02-unix.tar.gz"
+    dest: "/opt/app"
+- name: Check if /opt/app/nexus exists
+  stat:
+    path: "/opt/app/nexus"
+  register: stat_result
+- name: Rename file
+  shell: mv "/opt/app/nexus-3.0.2-02" "/opt/app/nexus"
+#  when: stat_result == false
+- name: Add nexus user
+  user:
+    name: nexus
+    state: present
+- name: Set file owner to nexus
+  file:
+    recurse: yes
+    group: nexus
+    owner: nexus
+    path: /opt/app/nexus
+- name: Set nexus to run as nexus
+  copy:
+    content: run_as_user="nexus"
+    dest: /opt/app/nexus/bin/nexus.rc
+- name: Create symlink
+  file:
+    src: /opt/app/nexus/bin/nexus
+    dest: /etc/init.d/nexus
+    state: link
+- name: Add nexus service
+  shell: chkconfig --add nexus
+- name: Configure nexus service
+  shell: chkconfig --levels 345 nexus on
+- name: Start nexus service
+  service:
+    name: nexus
+    state: started
+- name: Set authorized key
+  authorized_key:
+    user: nexus
+    state: present
+    key: "{{ nexus_ssh_key }}"
+...
